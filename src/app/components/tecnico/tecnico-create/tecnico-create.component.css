@@ -29,3 +29,6 @@ p {
     margin-top: 4rem;
     opacity: .5;
 }
+mat-icon{
+    opacity: .8;
+}
