@@ -7,7 +7,7 @@ import { Tecnico } from '../../../models/tecnico';
 import { ClienteService } from '../../../services/cliente.service';
 import { TecnicoService } from '../../../services/tecnico.service';
 import { ChamadoService } from '../../../services/chamado.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chamado-update',
@@ -39,12 +39,15 @@ export class ChamadoUpdateComponent  implements OnInit{
   constructor(private clienteService: ClienteService,
     private tecnicoService: TecnicoService,private chamadoService: ChamadoService,
     private toast:ToastrService,
-    private route: Router){
+    private route: Router,
+    private router: ActivatedRoute){
   }
 
   ngOnInit(): void {
     this.findAllClientes();
     this.findAllTecnicos();
+    this.chamado.id = this.router.snapshot.paramMap.get('id')
+    this.findById()
   }
 
 
@@ -70,12 +73,41 @@ export class ChamadoUpdateComponent  implements OnInit{
            this.cliente.valid
   }
 
-  create():void{
-    this.chamadoService.create(this.chamado).subscribe(resposta=> {
-        this.toast.success('Chamado criado com sucesso', 'Chamado');
+  findById():void {
+    this.chamadoService.findById(this.chamado.id).subscribe(resposta => {
+      this.chamado = resposta
+    },ex => {
+      this.toast.error(ex.error.error)
+    })
+  }
+
+  update():void{
+    this.chamadoService.update(this.chamado).subscribe(resposta=> {
+        this.toast.success('Chamado atualizado com sucesso', 'Atualizar chamado');
         this.route.navigate(['chamados'])
     },ex => {
       this.toast.error(ex.error.error)
     })
+  }
+
+
+  retornaStatus(status: any):string{
+    if(status =='0'){
+      return 'ABERTO'
+    }else if (status =='1'){
+      return 'EM ANDAMENTO'
+    }else {
+      return 'ENCERRADO'
+    }
+  }
+
+  retornaPrioridade(prioridade: any):string{
+    if(prioridade =='0'){
+      return 'BAIXA'
+    }else if (prioridade =='1'){
+      return 'MEDIA'
+    }else {
+      return 'ALTA'
+    }
   }
 }
