@@ -1,3 +1,4 @@
+import { TecnicoDeleteComponent } from './components/tecnico/tecnico-delete/tecnico-delete.component';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { NavComponent } from "./components/nav/nav.component";
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: "tecnicos", component: TecnicoListComponent },
       { path: "tecnicos/create", component: TecnicoCreateComponent },
       { path: "tecnicos/update/:id", component: TecnicoUpdateComponent },
+       { path: "tecnicos/delete/:id", component: TecnicoDeleteComponent }
     ],
   },
 ];
