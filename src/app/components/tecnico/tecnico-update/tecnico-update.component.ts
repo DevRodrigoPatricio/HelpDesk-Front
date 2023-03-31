@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './tecnico-update.component.html',
   styleUrls: ['./tecnico-update.component.css']
 })
-export class TecnicoUpdateComponent {
+export class TecnicoUpdateComponent implements OnInit{
   tecnico: Tecnico = {
     id: "",
     nome: "",
