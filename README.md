@@ -1,6 +1,6 @@
 # HelpDeskFront
 
-![image](https://user-images.githubusercontent.com/84483277/236576676-fee9d458-0dad-4e9d-a4c6-dd0a20704061.png)
+![Captura de tela de 2023-03-31 19-35-21](https://user-images.githubusercontent.com/84483277/236576784-b2adb023-d7b1-4b5c-a375-19c424eff124.png)
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
